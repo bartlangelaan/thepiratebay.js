@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<body>
+<form id="form">
+    <input id="query" placeholder="Search query">
+</form>
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="TPB.js"></script>
+<script>
+    TPB.search('arrow').then(function(torrents){
+        console.log(torrents);
+    });
+
+    $("#form").on("submit", function(e){
+        e.preventDefault();
+        TPB.search($("#query").val()).then(function(torrents){
+            document.location = torrents[0].magnet;
+        });
+    });
+</script>
+</body>
+</html>
